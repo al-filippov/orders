@@ -1,0 +1,22 @@
+<h3>Заказ №{{$ctrl.order.id}} от {{$ctrl.order.creationDate | date:'dd.MM.yyyy HH.mm'}}</h3>
+
+<p>
+    <a class="button" href="#!/orders">
+        <button>Назад</button>
+    </a>
+</p>
+
+<div class="col-sm-5">
+    <div class="row well">
+        <div class="col-sm-7">Наименование</div>
+        <div class="col-sm-2">Цена</div>
+        <div class="col-cm-1">Количество</div>
+    </div>
+    <div class="row well" ng-repeat="orderLine in $ctrl.order.orderLines | orderBy: 'id'">
+        <div class="col-sm-7">{{orderLine.item}}</div>
+        <div class="col-sm-2">{{orderLine.price}}</div>
+        <div class="col-sm-1">{{orderLine.quantity}}</div>
+    </div>
+</div>
+
+</table>

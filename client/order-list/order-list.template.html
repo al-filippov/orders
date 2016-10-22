@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <div>
+                <a class="button" ng-click="$ctrl.addOrder()">
+                    <button>Создать заказ</button>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-2">
+
+            <div class="pull-right">
+                <!--Sidebar content-->
+
+                <p>
+                    Найти:
+                    <input ng-model="$ctrl.query"/>
+                </p>
+
+                <p>
+                    Сортировка:
+                    <select ng-model="$ctrl.sortProp">
+                        <option value="id">По номеру</option>
+                        <option value="creationDate">По дате создания</option>
+                    </select>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-5">
+            <!--Body content-->
+
+            <ul class="orders">
+
+                <li ng-repeat="order in $ctrl.orders | filter:$ctrl.dateFilter($ctrl.query) | orderBy:$ctrl.sortProp">
+                    <div class="row well">
+                        <div class="col-sm-10">
+                            <a href="#!/orders/{{order.id}}">Заказ №{{order.id}} от {{order.creationDate |
+                                date:'dd.MM.yyyy
+                                HH.mm'}}</a>
+                        </div>
+                        <div class="col">
+                            <div class="pull-right">
+                                <a class="btn btn-warning" href="#!/orders/{{order.id}}/edit">Редактировать</a>
+                                <a class="btn btn-danger" data="{{order}}"
+                                   ng-click="$ctrl.deleteOrder(order)">Удалить</a>
+                            </div>
+                        </div>
+                        <p/>
+                    </
+                    >
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</div>

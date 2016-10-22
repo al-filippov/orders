@@ -1,0 +1,42 @@
+<h3>Заказ №{{$ctrl.order.id}} от {{$ctrl.order.creationDate | date:'dd.MM.yyyy HH.mm'}}</h3>
+
+<form class="form-horizontal" role="form" ng-submit="$ctrl.saveOrder()">
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="#!/orders">
+                <button>Назад</button>
+            </a>
+        </div>
+        <div class="col-sm-2">
+            <div class="pull-right">
+                <a class="button" ng-click="$ctrl.addOrderLine()">
+                    <button>Добавить строку</button>
+                </a>
+                <button type="submit">Сохранить заказ</button>
+            </div>
+        </div>
+    </div>
+
+    <p>
+        <span ng-style="{color: $ctrl.resultColor}">{{$ctrl.result}}</span>
+    </p>
+
+
+    <div class="col-sm-5">
+        <div class="row well">
+            <div class="col-sm-4">Наименование</div>
+            <div class="col-sm-3">Цена</div>
+            <div class="col-cm-3">Количество</div>
+            <div class="col-cm-1"></div>
+        </div>
+        <div class="row well" ng-repeat="orderLine in $ctrl.order.orderLines | orderBy: 'id'">
+            <div class="col-sm-4"><input type="text" ng-model="orderLine.item" placeholder="Наименование"></div>
+            <div class="col-sm-3"><input type="number" required step="0.01" ng-model="orderLine.price"
+                                         placeholder="Цена"></div>
+            <div class="col-sm-3"><input type="number" required step="1" ng-model="orderLine.quantity"
+                                         placeholder="Количество"></div>
+            <div class="col-cm-1"><a class="btn btn-danger" data="{{orderLine}}"
+                                     ng-click="$ctrl.deleteOrderLine(orderLine)">Удалить</a></div>
+        </div>
+    </div>
+</form>
