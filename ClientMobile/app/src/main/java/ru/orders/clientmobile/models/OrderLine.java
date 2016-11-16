@@ -1,6 +1,8 @@
 package ru.orders.clientmobile.models;
 
-public class OrderLine {
+import java.io.Serializable;
+
+public class OrderLine implements Serializable {
 
     private Long id;
 

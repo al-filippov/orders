@@ -1,10 +1,11 @@
 package ru.orders.clientmobile.models;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class Order {
+public class Order implements Serializable {
 
     private Long id;
 
